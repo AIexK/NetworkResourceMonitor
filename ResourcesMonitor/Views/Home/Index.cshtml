@@ -1,0 +1,31 @@
+﻿@{
+    ViewBag.Title = "Network Resource Monitor";
+}
+
+<div class="vertical-gap">
+</div>
+
+<div id="main-block-for-adding" class="very-main-block">    
+    <div class="outer-spinner">
+        <div class="middle-spinner-inner-block">
+            <div class="center-spinner-block">
+                <div class="spinner-text">Loading...</div>
+                <img class="spinner" src="~/Content/Spinners/spinner1.gif">
+            </div>
+        </div>
+    </div>
+</div>
+ 
+<link href="~/Content/mainLogic.min.css" rel="stylesheet" />
+
+@section scripts{
+    <script src="~/Scripts/jquery.signalR-2.3.0.min.js"></script>
+    <script src="~/Scripts/leader-line-master/leader-line.min.js"></script>
+    <script src="~/Scripts/jquery-progresspiesvg-min.js"></script>
+
+    <script src="\Scripts\jquery-confirm\jquery-confirm.min.js"></script>
+    <link rel="stylesheet" href="\Scripts\jquery-confirm\jquery-confirm.min.css" />
+
+    <script src="~/signalr/hubs"></script>   
+    <script src="~/Scripts/mainLogic.min.js"></script>
+}

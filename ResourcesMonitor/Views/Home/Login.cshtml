@@ -1,0 +1,93 @@
+﻿@using ResourcesMonitor.Models;
+@model LoginViewModel
+@{
+    ViewBag.Title = "Authorization";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section viewPort{
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+}
+
+@section styles{
+    <style type="text/css">
+        * {
+            -webkit-box-sizing: border-box;
+            -moz-box-sizing: border-box;
+            box-sizing: border-box;
+            outline: none;
+        }
+
+        body {
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
+
+        .login-form {
+            margin: 100px auto;
+            max-width: 430px;
+            /*background: #fff;*/
+            background-color: rgba(255, 255, 255, 0.6);
+            padding: 15px 26px 20px 26px;
+            border-radius: 10px;
+        }
+
+        form[role=form] h2 {
+            margin-top: 5px;
+            color: #5d5c5c;
+        }
+
+        form[role=form] p {
+            color: #929292;
+        }
+
+        form .checkbox {
+            padding-left: 20px;
+        }
+
+            form .checkbox label {
+                padding-left: 0;
+            }
+    </style>
+}
+
+<section class="container">
+    <section class="login-form">
+
+        @using (Html.BeginForm("Login", "Home", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+        {
+            @Html.AntiForgeryToken()
+            <div class="text-center">
+                <h2>Authorization</h2>
+            </div>
+            <p>Enter the username and password that you usually enter when you log in your domain account</p>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Login, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.TextBoxFor(m => m.Login, new { @class = "form-control", placeholder = "Enter login", @required = "required" })
+                    @Html.ValidationMessageFor(m => m.Login, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(m => m.Password, new { @class = "col-sm-2 control-label" })
+                <div class="col-sm-10">
+                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", placeholder = "Password", @required = "required" })
+                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-offset-3 col-md-10">
+                    <div class="checkbox">
+                        @Html.CheckBoxFor(m => m.RememberMe, new { @checked = "checked" })
+                        @Html.LabelFor(m => m.RememberMe)
+                    </div>
+                </div>
+            </div>
+            <button type="submit" name="go" class="btn btn-block btn-success">Log in</button>}
+
+    </section>
+</section>
